@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+  th {
+    background-color: yellow;
+  }
+</style>
+</head>
+<body>
+
+<table id="tablo">
+  <tr>
+    <th>İsim</th>
+    <th>Ortalama</th>
+  </tr>
+</table>
+
+<script>
+const ogrenciler = [["Ayşe", [80, 75, 55]],["Aslı", [90, 60, 77]],["Memati", [50, 85, 40]],["Medine", [100, 100, 100]],["Necip", [80, 80, 95]],["Mert", [95, 85, 90]]];
+
+let toplam = 0;
+let sayac = 0;
+
+ogrenciler.forEach(function(ogr){
+  let vize = ogr[1][0];
+  let odev = ogr[1][1];
+  let final = ogr[1][2];
+  if (odev > 50) {
+    let ortalama = vize * 0.2 + odev * 0.4 + final * 0.4;
+    document.getElementById("tablo").innerHTML += 
+      "<tr><td>" + ogr[0] + "</td><td>" + ortalama + "</td></tr>";
+    toplam += ortalama;
+    sayac++;
+  }
+});
+
+let genelOrtalama = toplam / sayac;
+document.getElementById("tablo").innerHTML += 
+  "<tr><td colspan='2'>Genel Ortalama = " + genelOrtalama + "</td></tr>";
+</script>
+
+</body>
+</html>
